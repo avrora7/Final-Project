@@ -15,6 +15,7 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       {indexRoutes.map((prop, key) => {
+        
         return <Route path={prop.path} key={key} component={prop.component} />;
       })}
     </Switch>

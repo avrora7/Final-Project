@@ -36,6 +36,7 @@ class Dashboard extends React.Component {
           <Header {...this.props} />
           <Switch>
             {dashboardRoutes.map((prop, key) => {
+              console.log(prop);
               if (prop.collapse) {
                 return prop.views.map((prop2, key2) => {
                   return (

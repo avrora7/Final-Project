@@ -5,7 +5,7 @@
 import Dashboard from "layouts/Dashboard/Dashboard.jsx";
 import StaticPage from "layouts/StaticPage/StaticPage.jsx";
 var routes = [
-    { path: "/admin", name: "Dashboard", component: Dashboard },
+    { path: "/workarea", name: "Dashboard", component: Dashboard },
     { path: "/", name: "Home", component: StaticPage }
 ];
 export default routes;

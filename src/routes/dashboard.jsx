@@ -8,38 +8,38 @@ import UserPage from "views/UserPage/UserPage.jsx";
 
 var dashRoutes = [
   {
-    path: "/admin/dashboard",
+    path: "/workarea/dashboard",
     name: "Dashboard",
     icon: "design_app",
     component: Dashboard
   },
-  { path: "/admin/icons", name: "Icons", icon: "design_image", component: Icons },
-  { path: "/admin/maps", name: "Maps", icon: "location_map-big", component: Maps },
+  { path: "/workarea/icons", name: "Icons", icon: "design_image", component: Icons },
+  { path: "/workarea/maps", name: "Maps", icon: "location_map-big", component: Maps },
   {
-    path: "/admin/notifications",
+    path: "/workarea/notifications",
     name: "Notifications",
     icon: "ui-1_bell-53",
     component: Notifications
   },
   {
-    path: "/admin/user-page",
+    path: "/workarea/user-page",
     name: "User Profile",
     icon: "users_single-02",
     component: UserPage
   },
   {
-    path: "/admin/extended-tables",
+    path: "/workarea/extended-tables",
     name: "Table List",
     icon: "files_paper",
     component: TableList
   },
   {
-    path: "/admin/typography",
+    path: "/workarea/typography",
     name: "Typography",
     icon: "design-2_ruler-pencil",
     component: Typography
   }
   ,
-  { redirect: true, path: "/admin", pathTo: "/admin/dashboard", name: "Dashboard" }
+  { redirect: true, path: "/workarea", pathTo: "/workarea/dashboard", name: "Dashboard" }
 ];
 export default dashRoutes;

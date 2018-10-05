@@ -1,8 +1,10 @@
 import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { Footer } from "components";
 // javascript plugin used to create scrollbars on windows
-//import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 
-//import staticRoutes from "routes/static.jsx";
+import staticRoutes from "routes/static.jsx";
 
 //var ps;
 
@@ -27,12 +29,19 @@ class StaticPage extends React.Component {
   }
   render() {
     return (
-      <div className="container-fluid">
-        <h1>Hello</h1>
-        <button className="btn btn-primary">Click Me</button>
-        Hello
-          {/* <Route path={prop.path} component={prop.component} key={key} /> */}
-          {/* <Footer fluid /> */}
+      <div>
+        <div className="container-fluid">
+          <Switch>
+            {staticRoutes.map((prop, key) => {
+              if (prop.redirect)
+                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+              return (
+                <Route path={prop.path} component={prop.component} key={key} />
+              );
+            })}
+          </Switch>
+        </div>
+        <Footer fluid />
       </div>
     );
   }

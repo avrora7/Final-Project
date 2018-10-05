@@ -30,17 +30,15 @@ class StaticPage extends React.Component {
   render() {
     return (
       <div>
-        <div className="container-fluid">
-          <Switch>
-            {staticRoutes.map((prop, key) => {
-              if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-              return (
-                <Route path={prop.path} component={prop.component} key={key} />
-              );
-            })}
-          </Switch>
-        </div>
+        <Switch>
+          {staticRoutes.map((prop, key) => {
+            if (prop.redirect)
+              return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+            return (
+              <Route path={prop.path} component={prop.component} key={key} />
+            );
+          })}
+        </Switch>
         <Footer fluid />
       </div>
     );

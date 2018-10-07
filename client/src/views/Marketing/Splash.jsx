@@ -1,41 +1,12 @@
 import React from "react";
+import MarketingNavbar from "components/MarketingNavbar/MarketingNavbar.jsx";
 
 class Splash extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar-absolute fixed-top navbar-transparent  navbar navbar-expand-lg bg-transparent" id="mainNav">
-          <div className="container">
-            <a className="navbar-brand js-scroll-trigger" href="#page-top">We speak your language</a>
-            <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              Menu
-        <i className="fas fa-bars"></i>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarResponsive">
-              <ul className="navbar-nav text-uppercase ml-auto">
-                <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger" href="#services">Services</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger" href="#about">About</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger" href="#team">Team</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link js-scroll-trigger" href="/login">Login</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <MarketingNavbar/>
+        <br/><br/><br/><br/>
 
         {/* Header */}
         <header className="masthead">
@@ -394,7 +365,7 @@ class Splash extends React.Component {
               </div>
             </div>
 
-            <form id="contactForm" name="sentMessage" novalidate="novalidate">
+            <form id="contactForm" name="sentMessage" noValidate="noValidate">
               <div className="row  justify-content-md-center">
                 <div className="col-md-6">
 

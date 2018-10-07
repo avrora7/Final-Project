@@ -1,0 +1,10 @@
+
+.MarketingSignUpManuBtn {
+    background-color:#f96332;
+    color:white;
+    font-weight: bold;
+    border-radius: 0.1875rem;
+    padding: 1px 12px !important;
+    margin: 7px !important;
+    letter-spacing: 1px;
+}

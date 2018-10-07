@@ -4,8 +4,43 @@ import "./Marketing.css";
 import MarketingNavbar from "components/MarketingNavbar/MarketingNavbar.jsx";
 
 class Signup extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          error: null,
+          isLoaded: false,
+          items: []
+        };
+      }
+    
+      componentDidMount() {
+        fetch("http://localhost:3001")
+          .then(res => res.json())
+          .then(
+            (result) => {
+                console.log("got result")
+                console.log(result);
+              this.setState({
+                isLoaded: true,
+                items: result
+              });
+            },
+            (error) => {
+                console.log("got error")
+              this.setState({
+                isLoaded: true,
+                error
+              });
+            }
+          )
+      }
+
+
     render() {
+        const { error, isLoaded, items } = this.state;
         return (
+            
             <div className="MarketingAuthContainer">
                 <MarketingNavbar />
                 <Card className="MarketingCentralCard">
@@ -13,6 +48,13 @@ class Signup extends React.Component {
                         <h5 className="title">Sign Up</h5>
                     </CardHeader>
                     <CardBody>
+                    <ul>
+          {items.map(item => (
+            <li key={item.name}>
+              {item.name} {item.price}
+            </li>
+          ))}
+        </ul>
                         <form>
                             <FormGroup>
                                 <Input type="email" name="email" id="email" placeholder="Email" />

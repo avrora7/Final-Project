@@ -5,106 +5,51 @@ class Splash extends React.Component {
   render() {
     return (
       <div>
-        <MarketingNavbar/>
-        <br/><br/><br/><br/>
+        <MarketingNavbar />
+        <br />
+        <br />
+        <br />
+        <br />
 
         {/* Header */}
         <header className="masthead">
           <div className="container">
             <div className="intro-text">
-              <div className="intro-lead-in">Translation Agency</div>
+              <div className="intro-lead-in">Startup Hub</div>
               <div className="intro-heading text-uppercase">Language Links</div>
-              <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/signup">Sign Up</a>
+              <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+                href="/signup">
+                Sign Up
+              </a>
             </div>
           </div>
         </header>
-        <section id="services">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 text-center">
-                <h2 className="section-heading text-uppercase">Services</h2>
-                <h3 className="section-subheading text-muted">Language Link is a full-service provider of linguistic services
-                  including
-                  translation, interpreting, localization and language training. We deliver top-quality language solutions
-                  across
-                  a wide range of media and communication channels. Our linguists work in all fields utilizing
-                  state-of-the-art
-            technology. Our services include, but are not limited to:</h3>
-              </div>
-            </div>
-            <div className="row text-center">
-              <div className="col-md-4">
-                <span className="fa-stack fa-4x">
-                  <i className="fas fa-circle fa-stack-2x text-primary"></i>
-                  <i className="fa fa-users aria-hidden='true' fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 className="service-heading">Translation</h4>
-                <p className="text-muted">With over 20 years of experience providing professional translation services throughout
-                  the
-                  U.S. and internationally, the Language Link team offers the versatility of certified translation across
-                  multiple
-                  industries, with the personalized and high-quality attention to detail that every translation project
-            needs.</p>
-              </div>
-              <div className="col-md-4">
-                <span className="fa-stack fa-4x">
-                  <i className="fas fa-circle fa-stack-2x text-primary"></i>
-                  <i className="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 className="service-heading">Interpretation</h4>
-                <p className="text-muted">Our network of trained and experienced interpreters are ready to speak your language in
-                  any
-                  venue and field. Our interpreting services are available over the phone or on-site anywhere in the world,
-                  and
-            include consecutive, conference and telephonic interpreting.</p>
-              </div>
-              <div className="col-md-4">
-                <span className="fa-stack fa-4x">
-                  <i className="fas fa-circle fa-stack-2x text-primary"></i>
-                  <i className="fa fa-book aria-hidden='true' fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 className="service-heading">Training</h4>
-                <p className="text-muted">Language Link was founded by interpreters, and today one of our main pillars of
-                  business
-                  is language training the next generation of interpreters to break down the language barriers. We offer
-                  corporate,
-                  ESL, medical, legal, business and community Interpreter Training Programs.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
 
+        {/* Portfolio */}
         <section className="bg-light" id="portfolio">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <h2 className="section-heading text-uppercase">Portfolio</h2>
-                <h3 className="section-subheading text-muted">We specialize in multiple industries, with a main focus on the
-                  fields
-                  of technology and life science. Our company is a reliable partner for all your translation needs in the
-                  following
-                  areas:
-          </h3>
+                <h2 className="section-heading text-uppercase">START HUB</h2>
+                <h3 className="section-subheading text-muted">
+                We provide speed and direction to the world’s top <br />
+                tech startup and corporate innovators.
+                </h3>
               </div>
             </div>
             <div className="row">
-              <div className="col-md-4 col-sm-6 portfolio-item">
+              <div className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/01-thumbnail.jpg" alt="" />
-                <div className="portfolio-caption">
-                  <h4>Technology</h4>
-                  <p className="text-muted">Information Technology,  Telecommunications,  Medical Device and Diagnostics,
-                     Energy
-              and Mining</p>
+                <div className="portfolio-caption text-center">
+                  <h4>Workplace</h4>
+                  <p className="text-center">Whether you need a desk, office suite, or entire HQ, we create environments that increase productivity, innovation, and collaboration.</p>
                 </div>
               </div>
-              <div className="col-md-4 col-sm-6 portfolio-item">
+              <div className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/02-thumbnail.jpg" alt="" />
-                <div className="portfolio-caption">
-                  <h4>Law</h4>
-                  <p className="text-muted">Property and Patent Law, Immigration,  Depositions and Negotiations,  Legal
-                    Conferences
-              and Symposia </p>
+                <div className="portfolio-caption text-center">
+                  <h4>Mentorship</h4>
+                  <p className="text-center">We connect founders with relevant industry mentors. </p>
                 </div>
               </div>
               <div className="col-md-4 col-sm-6 portfolio-item">
@@ -138,6 +83,66 @@ class Splash extends React.Component {
             </div>
           </div>
         </section>
+
+
+        {/* Services */}
+        <section id="services">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <h2 className="section-heading text-uppercase">Services</h2>
+                <h3 className="section-subheading text-muted">
+                  Language Link is a full-service provider of linguistic services including
+                  translation, interpreting, localization and language training. We deliver top-quality language solutions
+                  across a wide range of media and communication channels. Our linguists work in all fields utilizing
+                  state-of-the-art technology. Our services include, but are not limited to:
+                </h3>
+              </div>
+            </div>
+            <div className="row text-center">
+              <div className="col-md-4">
+                <span className="fa-stack fa-4x">
+                  <i className="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i className="fa fa-users aria-hidden='true' fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 className="service-heading">Translation</h4>
+                <p className="text-muted">
+                  With over 20 years of experience providing professional
+                  translation services throughout the U.S. and internationally,
+                  the Language Link team offers the versatility of certified
+                  translation across multiple industries, with the personalized
+                  and high-quality attention to detail that every translation
+                  project needs.
+                </p>
+              </div>
+              <div className="col-md-4">
+                <span className="fa-stack fa-4x">
+                  <i className="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i className="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 className="service-heading">Interpretation</h4>
+                <p className="text-muted">Our network of trained and experienced interpreters are ready to speak your language in
+                  any venue and field. Our interpreting services are available over the phone or on-site anywhere in the world,
+                  and
+            include consecutive, conference and telephonic interpreting.</p>
+              </div>
+              <div className="col-md-4">
+                <span className="fa-stack fa-4x">
+                  <i className="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i className="fa fa-book aria-hidden='true' fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 className="service-heading">Training</h4>
+                <p className="text-muted">Language Link was founded by interpreters, and today one of our main pillars of
+                  business
+                  is language training the next generation of interpreters to break down the language barriers. We offer
+                  corporate,
+                  ESL, medical, legal, business and community Interpreter Training Programs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* About */}
         <section id="about">
@@ -356,6 +361,7 @@ class Splash extends React.Component {
           </div>
         </section>
 
+        {/* Contact */}
         <section id="contact">
           <div className="container">
             <div className="row">

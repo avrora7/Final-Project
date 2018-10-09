@@ -12,7 +12,7 @@ class Signup extends React.Component {
             email: "",
             password: "",
             password2: "",
-            role: true,
+            isVendor: true,
             error: null
         };
         this.handleRadio = this.handleRadio.bind(this);
@@ -49,7 +49,16 @@ class Signup extends React.Component {
                     body: JSON.stringify(this.state)
                 })
                     .then(response => {
-                        response.json()
+                        if (!response.ok) {
+                            this.setState({ error: response.statusText })
+                        }
+                        
+                        response.json().then(function (data) {
+                           window.location.replace("/login");
+                        });
+                    }).catch(error => {
+                        alert("failed " + error)
+                        this.setState({ error: "Incorrect response from the server: " + error });
                     }); // parses response to JSON
             } else {
                 this.setState({ error: "Passwords don't match" });
@@ -86,70 +95,72 @@ class Signup extends React.Component {
 
     render() {
         return (
-            <div className="MarketingAuthContainer">
-                <MarketingNavbar />
-                <Card className="MarketingCentralCard">
-                    <CardHeader>
-                        <h5 className="title">Sign Up</h5>
-                    </CardHeader>
-                    <CardBody>
-                        <form onSubmit={this.handleSubmit}>
-                            <FormGroup>
-                                <Input type="email"
-                                    name="email"
-                                    id="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    placeholder="Email" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="text" name="company" id="company"
-                                    value={this.state.company}
-                                    onChange={this.handleChange}
-                                    placeholder="Business name " />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="password" name="password" id="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                    placeholder="Password " />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="password" name="password2" id="password2"
-                                    value={this.state.password2}
-                                    onChange={this.handleChange}
-                                    placeholder="Re-type password" />
-                            </FormGroup>
-                            <FormGroup tag="fieldset">
-                                <label>I am</label>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input type="radio" name="role" value="true" checked={this.state.role}
-                                            onChange={this.handleRadio}
-                                        />{' '}
-                                        Vendor (provide services to startups)
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                        <Input type="radio" name="role" value="false" checked={!this.state.role}
-                                            onChange={this.handleRadio}
-                                        />{' '}
-                                        Startup (looking for help)
-                                 </Label>
-                                </FormGroup>
-                            </FormGroup>
-                            {this.state.error ? (
-                                <span className="text-danger">{this.state.error}<br /></span>
+            <div><MarketingNavbar />
+                <div className="MarketingAuthContainer">
 
-                            ) : (
-                                    <br />
-                                )}
-                            <button type="submit" className="btn btn-primary">Sign up2</button>
-                            <br /><a href="login">Click here </a>to login.
+                    <Card className="MarketingCentralCard">
+                        <CardHeader>
+                            <h5 className="title">Sign Up</h5>
+                        </CardHeader>
+                        <CardBody>
+                            <form onSubmit={this.handleSubmit}>
+                                <FormGroup>
+                                    <Input type="email"
+                                        name="email"
+                                        id="email"
+                                        value={this.state.email}
+                                        onChange={this.handleChange}
+                                        placeholder="Email" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="text" name="company" id="company"
+                                        value={this.state.company}
+                                        onChange={this.handleChange}
+                                        placeholder="Business name " />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="password" name="password" id="password"
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
+                                        placeholder="Password " />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="password" name="password2" id="password2"
+                                        value={this.state.password2}
+                                        onChange={this.handleChange}
+                                        placeholder="Re-type password" />
+                                </FormGroup>
+                                <FormGroup tag="fieldset">
+                                    <label>I am</label>
+                                    <FormGroup check>
+                                        <Label check>
+                                            <Input type="radio" name="isVendor" value="true" checked={this.state.isVendor}
+                                                onChange={this.handleRadio}
+                                            />{' '}
+                                            Vendor (provide services to startups)
+                                    </Label>
+                                    </FormGroup>
+                                    <FormGroup check>
+                                        <Label check>
+                                            <Input type="radio" name="isVendor" value="false" checked={!this.state.isVendor}
+                                                onChange={this.handleRadio}
+                                            />{' '}
+                                            Startup (looking for help)
+                                 </Label>
+                                    </FormGroup>
+                                </FormGroup>
+                                {this.state.error ? (
+                                    <span className="text-danger">{this.state.error}<br /></span>
+
+                                ) : (
+                                        <br />
+                                    )}
+                                <button type="submit" className="btn btn-primary">Sign up2</button>
+                                <br /><a href="login">Click here </a>to login.
                         </form>
-                    </CardBody>
-                </Card>
+                        </CardBody>
+                    </Card>
+                </div>
             </div>
         );
     }

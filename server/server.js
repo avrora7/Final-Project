@@ -1,12 +1,36 @@
 require('dotenv').config();
 const express = require('express');
 var bodyParser = require("body-parser");
+var session = require("express-session");
+var methodOverride = require('method-override')
 const cors = require('cors');
-const Sequelize = require('sequelize');
+//const Sequelize = require('sequelize');
+var passport = require("./config/passport");
 
 const app = express();
+app.use(methodOverride());
+    var allowCrossDomain = function(req, res, next) {
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        // intercept OPTIONS method
+        if ('OPTIONS' == req.method) {
+            res.send(200);
+        }
+        else {
+            next();
+        }
+    };
+app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 const port = process.env.PORT || 3002;
 
 app.use(cors());

@@ -3,21 +3,27 @@ var passport = require("./config/passport");
 
 module.exports = function (app) {
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    console.log(req)
-    res.json(req.user.get("role"));
+    //console.log(req)
+    console.log(req.user.dataValues)
+    res.json("ok");
   });
 
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
 
-    // var userData = req.body;
-    // userData.password = userData.password1
+    let userData = {
+      email: req.body.email,
+      isVendor: req.body.isVendor,
+      password: req.body.password,
+      company: req.body.company
+    };
 
-    // db.User.create(userData).then(function () {
-    //   res.json("ok");
-    // }).catch(function (err) {
-    //   res.status(422).json(err);
-    // });
+    db.User.create(userData).then(function (result) {
+      res.json(result);
+    }).catch(function (err) {
+      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + err);
+      res.status(500).json(err);
+    });
   });
 
   // Route for logging user out
@@ -26,20 +32,12 @@ module.exports = function (app) {
     res.redirect("/");
   });
 
-//   // Route for getting data about our user to be used client side
-//   app.get("/api/user_data", function (req, res) {
-//     if (!req.user) {
-//       // The user is not logged in, send back an empty object
-//       res.json({});
-//     }
-//     else {
-//       // Otherwise send back the user's email and id
-//       res.json({
-//         email: req.user.email,
-//         id: req.user.id
-//       });
-//     }
-//   });
+  // Route for getting data about our user to be used client side
+  app.get("/api/user", function (req, res) {
+    console.log("********************** in user get *************************")
+    console.log(req.user);
+    res.json("ok");
+  });
 
 //   app.post("/api/jobs", function (req, res) {
 

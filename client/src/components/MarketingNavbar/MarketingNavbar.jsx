@@ -7,7 +7,7 @@ class MarketingNavbar extends React.Component {
         return (
             <nav className="navbar sticky-top navbar-dark bg-dark navbar-expand-lg"
                 id="mainNav">
-                <div class="container">
+                <div className="container">
                 <a id="navhead"
                 className="navbar-brand" href="#page-top">
                 StartHub

@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
       as: "Specialization",
       foreignKey: {
         name:"specializationId",
-        allowNull: false
+        allowNull: true
       }
     });
   };

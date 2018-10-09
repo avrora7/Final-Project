@@ -7,27 +7,21 @@ class Splash extends React.Component {
     return (
       <div>
         <MarketingNavbar />
-        <br />
-        <br />
-        <br />
-        <br />
-
-
-        <a className="btn btn-primary btn-xl text-uppercase" href="/signup">Sign Up</a>
-
+        
         {/* Header */}
-        {/* <header className="masthead">
+        <header className="masthead">
           <div className="container">
-            <div className="intro-text">
-              <div className="intro-lead-in">Startup Hub</div>
-              <div className="intro-heading text-uppercase">Language Links</div>
-              <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-                href="/signup">
-                Sign Up
-              </a>
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <h2 className="section-heading intro-text">StartHub</h2>
+                <h3 className="section-subheading">
+                  We provide speed and direction to the world’s top tech startup and corporate innovators.
+                </h3>
+                 <a className="btn btn-primary btn-xl text-uppercase" href="/signup">Sign Up</a>
+              </div>
             </div>
           </div>
-        </header> */}
+        </header>
 
         {/* Portfolio */}
         <section className="bg-light" id="portfolio">
@@ -38,6 +32,7 @@ class Splash extends React.Component {
                 <h3 className="section-subheading">
                   We provide speed and direction to the world’s top tech startup and corporate innovators.
                 </h3>
+                 <a className="btn btn-primary btn-xl text-uppercase" href="/signup">Sign Up</a>
               </div>
             </div>
             <div className="row service-section">
@@ -437,12 +432,13 @@ class Splash extends React.Component {
     </section >
 
       {/* Contact */ }
+      <br /><br /><br /><br /><br />
       < section id = "contact" >
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase">Contact Us</h2>
-              <h3 className="section-subheading text-muted">Have a question or looking for a quote? Contact us!</h3>
+              <h3 className="section-subheading">Have a question or looking for a quote? Contact us!</h3>
             </div>
           </div>
 
@@ -474,13 +470,9 @@ class Splash extends React.Component {
               </div>
             </div>
           </form>
-
         </div>
     </section >
-
-    
-
-      </div >
+    <br /><br /><br /><br /><br /></div >
     );
   }
 }

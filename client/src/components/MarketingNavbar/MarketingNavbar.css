@@ -21,3 +21,7 @@
 .navbar-action-button {
     font-weight: normal !important;
 }
+
+.navbar {
+    margin-bottom: 0px !important;
+}

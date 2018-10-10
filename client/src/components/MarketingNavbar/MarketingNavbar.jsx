@@ -23,13 +23,7 @@ class MarketingNavbar extends React.Component {
                             <a className="nav-link js-scroll-trigger" href="/splash#workspace">Workspace</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link js-scroll-trigger" href="/splash#incubator">Incubator</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link js-scroll-trigger" href="/splash#accelerator">Accelerator</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link js-scroll-trigger" href="/splash#mentorship">Mentorship</a>
+                            <a className="nav-link js-scroll-trigger" href="/splash#incubator">Programs</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link js-scroll-trigger" href="/splash#funding">Funding</a>

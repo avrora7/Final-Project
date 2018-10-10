@@ -13,35 +13,20 @@ class Footer extends React.Component {
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">Creative Tim</a>
-              </li>
-              <li>
-                <a href="https://presentation.creative-tim.com">About Us</a>
-              </li>
-              <li>
-                <a href="https://blog.creative-tim.com">Blog</a>
+                <span class="copyright">Copyright &copy; Elizabeth Engler 2018</span>
               </li>
             </ul>
           </nav>
-          <div className="copyright">
-            &copy; {1900 + new Date().getYear()}, Designed by{" "}
-            <a
-              href="https://www.invisionapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Invision
-            </a>. Coded by{" "}
-            <a
-              href="https://www.creative-tim.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Creative Tim
-            </a>.
-          </div>
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+          </ul>
         </Container>
-      </footer>
+      </footer >
     );
   }
 }

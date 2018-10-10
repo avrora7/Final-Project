@@ -9,7 +9,7 @@ class Splash extends React.Component {
         <MarketingNavbar />
 
         {/* Header */}
-        <header className="masthead">
+        <header className="masthead" id="page-top">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
@@ -24,7 +24,7 @@ class Splash extends React.Component {
         </header>
 
         {/* Services */}
-        <section className="bg-light" id="portfolio">
+        <section className="bg-light" id="services">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
@@ -35,7 +35,7 @@ class Splash extends React.Component {
               </div>
             </div>
             <div className="row service-section">
-              <div id="workspace" className="col-md-4 col-sm-6 portfolio-item text-center">
+              <div  className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/01-thumbnail.jpg" alt="" />
                 <div className="portfolio-caption text-center">
                   <h4>Workspace</h4>
@@ -45,7 +45,7 @@ class Splash extends React.Component {
                   refreshing design, engaging community, and benefits for all.</p>
                 </div>
               </div>
-              <div id="incubator" className="col-md-4 col-sm-6 portfolio-item text-center">
+              <div className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/02-thumbnail.jpg" alt="" />
                 <div className="portfolio-caption text-center">
                   <h4>Incubator</h4>
@@ -55,7 +55,7 @@ class Splash extends React.Component {
                    base themselves within the incubator for months or years. </p>
                 </div>
               </div>
-              <div id="accelerator" className="col-md-4 col-sm-6 portfolio-item text-center">
+              <div  className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/03-thumbnail.jpg" alt="" />
                 <div className="portfolio-caption">
                   <h4>Accelerator</h4>
@@ -66,7 +66,7 @@ class Splash extends React.Component {
                 </div>
               </div>
               <div className="row service-section">
-                <div id="mentorship" className="col-md-4 col-sm-6 portfolio-item text-center">
+                <div  className="col-md-4 col-sm-6 portfolio-item text-center">
                   <img className="img-fluid" src="/img/portfolio/04-thumbnail.jpg" alt="" />
                   <div className="portfolio-caption">
                     <h4>Bootcamp</h4>
@@ -75,7 +75,7 @@ class Splash extends React.Component {
                       technology.</p>
                   </div>
                 </div>
-                <div id="funding" className="col-md-4 col-sm-6 portfolio-item text-center">
+                <div  className="col-md-4 col-sm-6 portfolio-item text-center">
                   <img className="img-fluid" src="/img/portfolio/05-thumbnail.jpg" alt="" />
                   <div className="portfolio-caption">
                     <h4>Funding</h4>
@@ -84,7 +84,7 @@ class Splash extends React.Component {
                    even help you avoid issues in the future.</p>
                   </div>
                 </div>
-                <div id="corporate" className="col-md-4 col-sm-6 portfolio-item text-center">
+                <div className="col-md-4 col-sm-6 portfolio-item text-center">
                   <img className="img-fluid" src="/img/portfolio/06-thumbnail.jpg" alt="" />
                   <div className="portfolio-caption">
                     <h4>Corporate</h4>
@@ -99,7 +99,7 @@ class Splash extends React.Component {
         </section>
 
         {/* Programs */}
-        <section id="services">
+        <section id="programs">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
@@ -162,7 +162,7 @@ class Splash extends React.Component {
 
 
         {/*Funding */}
-        <section id="about">
+        <section className="bg-light" id="funding">
           <div className="container">
             <div className="row  text-center">
               <div classNafa fa-book aria-hidden='true' >
@@ -250,8 +250,9 @@ class Splash extends React.Component {
 
 
         {/* Corporate */}
-        < section className="bg-light" id="team" >
+        < section  id="corporate" >
           <div className="container">
+
             <div className="row">
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Corporate</h2>
@@ -260,21 +261,57 @@ class Splash extends React.Component {
               </div>
             </div>
             <div className="row">
-              
-            </div>
-            <div className="row">
-              <div className="col-lg-8 mx-auto text-center">
-                <p className="large text-muted"> Our Project and Account Managers will quickly become your company or
-                  organization’s
-            trusted partners in translation and interpretation projects.</p>
+              <div className="col-lg-12 text-center">
+                <h4 className="section-subheading">We Understand The Challenges Of Global Industry Leaders
+                </h4>
+                <p>
+                  The best and largest companies by market cap have one common denominator — they’ve leveraged emerging
+                  technology to transform their business and industry from the outside in. Those who fail to innovate
+                  will become irrelevant in tomorrow’s business and societal landscape.
+                </p>
+              </div>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="abouts">
+                    <img src="/img/corporate.jpg" className="corp-image"  />
+                    <div className="desc">
+                      <h4 className="section-subheading">What's Your Mission?</h4>
+                      <p>
+                        No matter where your business is in innovation maturity, StartHub can help you. We offer seven products that can
+                        be flexed to help solve your corporation's key challenges. </p>
+                      <ul>
+                        <li>Technology Exploration - Explore industry, innovation, and technology landscapes to identify opportunity areas
+                          within your business to pursue.
+                      </li>
+                        <li>Concept Design - Design out a variety of concepts that offer transformative solutions to your opportunity areas.
+                      </li>
+                        <li>Solution Design - Design out your concept idea into a viable innovation solution.
+                      </li>
+                        <li>Prototype Testing - Build out prototypes of your solution feature set and pressure test it in a proof of concept.
+                      </li>
+                        <li>Proof of Concept - Build out a holistic prototype of your solution and optimize it in a proof of concept.
+                      </li>
+                        <li>Discovery - Uncover and connect with the most promising and qualified startups within an identified opportunity area.
+                      </li>
+                        <li>Industry collaborative - Develop pilot partnerships with emerging growth companies within a specific industry focus.
+                      </li>
+                      </ul>
+
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
+            <div className="text-center">
+              <a className="btn btn-primary btn-xl text-uppercase" href="/signup">Let's Connect</a>
+            </div>
+
           </div>
         </section >
 
         {/* Contact */}
-        <br /><br /><br /><br /><br />
-        < section id="contact" >
+        < section className="bg-light" id="contact" >
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
@@ -282,11 +319,9 @@ class Splash extends React.Component {
                 <h3 className="section-subheading">Have a question or looking for a quote? Contact us!</h3>
               </div>
             </div>
-
             <form id="contactForm" name="sentMessage" noValidate="noValidate">
               <div className="row  justify-content-md-center">
                 <div className="col-md-6">
-
                   <div className="form-group">
                     <input className="form-control" id="name" type="text" placeholder="Your Name *" required="required"
                       data-validation-required-message="Please enter your name." />
@@ -307,7 +342,9 @@ class Splash extends React.Component {
                       data-validation-required-message="Please enter a message."></textarea>
                     <p className="help-block text-danger"></p>
                   </div>
-                  <button id="sendMessageButton" className="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+                  <div className="text-center">
+                    <button id="sendMessageButton" className="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+                  </div>
                 </div>
               </div>
             </form>

@@ -7,25 +7,9 @@ class Footer extends React.Component {
   render() {
     return (
       <footer
-        className={"footer" + (this.props.default ? " footer-default" : "")}
+        className={"footer  text-center" + (this.props.default ? " footer-default" : "")}
       >
-        <Container fluid={this.props.fluid ? true : false}>
-          <nav>
-            <ul>
-              <li>
-                <span class="copyright">Copyright &copy; Elizabeth Engler 2018</span>
-              </li>
-            </ul>
-          </nav>
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-          </ul>
-        </Container>
+                <div className="copyright">Copyright &copy; Elizabeth Engler 2018</div>
       </footer >
     );
   }

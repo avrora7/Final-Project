@@ -9,7 +9,7 @@ class MarketingNavbar extends React.Component {
                 id="mainNav">
                 <div className="container">
                 <a id="navhead"
-                className="navbar-brand" href="#page-top">
+                className="navbar-brand js-scroll-trigger" href="/splash#page-top">
                 StartHub
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -18,12 +18,12 @@ class MarketingNavbar extends React.Component {
                 </button>
                 
                 <div className="collapse navbar-collapse" id="navbarResponsive">
-                    <ul className="navbar-nav text-uppercase">
+                    <ul className="navbar-nav text-uppercase ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link js-scroll-trigger" href="/splash#workspace">Workspace</a>
+                            <a className="nav-link js-scroll-trigger" href="/splash#services">Services</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link js-scroll-trigger" href="/splash#incubator">Programs</a>
+                            <a className="nav-link js-scroll-trigger" href="/splash#programs">Programs</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link js-scroll-trigger" href="/splash#funding">Funding</a>

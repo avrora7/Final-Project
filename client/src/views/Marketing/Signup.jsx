@@ -39,13 +39,12 @@ class Signup extends React.Component {
             this.state.password2.trim() !== ""
         ) {
             if (this.state.password.trim() === this.state.password2.trim()) {
-                fetch("http://localhost:3002/api/signup", {
+                fetch("/api/signup", {
                     method: "POST",
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    mode: "cors",
                     body: JSON.stringify(this.state)
                 })
                     .then(response => {

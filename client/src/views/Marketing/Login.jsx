@@ -13,34 +13,9 @@ class Login extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event) {
-        
-
-            fetch("http://localhost:3002/api/user", {
-                method: "GET",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                mode: "cors",
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        alert("bad response")
-                    }
-
-                    response.json().then(function (data) {
-                       alert("got data " + data);
-                    });
-                }).catch(error => {
-                    alert("failed " + error)
-                }); // parses response to JSON
-
-       
-    }
+ 
 
     handleChange(event) {
         let key = event.target.name;
@@ -53,7 +28,7 @@ class Login extends React.Component {
             this.state.email.trim() !== "" &&
             this.state.password.trim() !== ""
         ) {
-            fetch("http://localhost:3002/api/login", {
+            fetch("/api/login", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -92,7 +67,6 @@ class Login extends React.Component {
                             <h5 className="title">Login</h5>
                         </CardHeader>
                         <CardBody>
-                            <button type="button" onClick={this.handleClick}>Click</button>
 
                             <form onSubmit={this.handleSubmit}>
                                 <FormGroup>

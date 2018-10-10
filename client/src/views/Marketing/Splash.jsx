@@ -296,17 +296,14 @@ class Splash extends React.Component {
                         <li>Industry collaborative - Develop pilot partnerships with emerging growth companies within a specific industry focus.
                       </li>
                       </ul>
-
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
             <div className="text-center">
               <a className="btn btn-primary btn-xl text-uppercase" href="/signup">Let's Connect</a>
             </div>
-
           </div>
         </section >
 
@@ -350,7 +347,7 @@ class Splash extends React.Component {
             </form>
           </div>
         </section >
-        <br /><br /><br /><br /><br /></div >
+        <br /><br /><br /><br /><br /><br /></div >
     );
   }
 }

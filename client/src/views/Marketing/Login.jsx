@@ -43,7 +43,20 @@ class Login extends React.Component {
                     }
 
                     response.json().then(function (data) {
-                        // window.location.replace("/workarea/dashboard");
+
+                        let replaceUrl = null;
+
+                        if (!data.isProfileComplete) {
+                                replaceUrl = "/complete_profile";
+                        }
+                        else {
+                            if (data.isVendor) {
+                                replaceUrl = "/workrea/vendor_dashboard";
+                            } else {
+                                replaceUrl = "/workrea/startup_dashboard";
+                            }
+                        }
+                        window.location.replace(replaceUrl);
                     });
                 }).catch(error => {
                     alert("failed " + error)

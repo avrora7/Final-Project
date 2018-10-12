@@ -35,7 +35,7 @@ class Splash extends React.Component {
               </div>
             </div>
             <div className="row service-section">
-              <div  className="col-md-4 col-sm-6 portfolio-item text-center">
+              <div className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/01-thumbnail.jpg" alt="" />
                 <div className="portfolio-caption text-center">
                   <h4>Workspace</h4>
@@ -55,7 +55,7 @@ class Splash extends React.Component {
                    base themselves within the incubator for months or years. </p>
                 </div>
               </div>
-              <div  className="col-md-4 col-sm-6 portfolio-item text-center">
+              <div className="col-md-4 col-sm-6 portfolio-item text-center">
                 <img className="img-fluid" src="/img/portfolio/03-thumbnail.jpg" alt="" />
                 <div className="portfolio-caption">
                   <h4>Accelerator</h4>
@@ -66,7 +66,7 @@ class Splash extends React.Component {
                 </div>
               </div>
               <div className="row service-section">
-                <div  className="col-md-4 col-sm-6 portfolio-item text-center">
+                <div className="col-md-4 col-sm-6 portfolio-item text-center">
                   <img className="img-fluid" src="/img/portfolio/04-thumbnail.jpg" alt="" />
                   <div className="portfolio-caption">
                     <h4>Bootcamp</h4>
@@ -75,7 +75,7 @@ class Splash extends React.Component {
                       technology.</p>
                   </div>
                 </div>
-                <div  className="col-md-4 col-sm-6 portfolio-item text-center">
+                <div className="col-md-4 col-sm-6 portfolio-item text-center">
                   <img className="img-fluid" src="/img/portfolio/05-thumbnail.jpg" alt="" />
                   <div className="portfolio-caption">
                     <h4>Funding</h4>
@@ -250,14 +250,16 @@ class Splash extends React.Component {
 
 
         {/* Corporate */}
-        < section  id="corporate" >
+        < section id="corporate" >
           <div className="container">
 
             <div className="row">
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Corporate</h2>
-                <h3 className="section-subheading">Catalyze Your Business Transformation With StartHub.
+                <div id="corp">
+                  <h3 className="section-subheading corp">Catalyze Your Business Transformation With StartHub.
                 </h3>
+                </div>
               </div>
             </div>
             <div className="row">
@@ -272,30 +274,31 @@ class Splash extends React.Component {
               </div>
               <div className="row">
                 <div className="col-lg-12">
-                  <div className="abouts">
-                    <img src="/img/corporate.jpg" className="corp-image"  />
+                  <div className="abouts" id="corp-pad">
+                    <img src="/img/corporate.jpg" className="corp-image" />
                     <div className="desc">
-                      <h4 className="section-subheading">What's Your Mission?</h4>
                       <p>
                         No matter where your business is in innovation maturity, StartHub can help you. We offer seven products that can
                         be flexed to help solve your corporation's key challenges. </p>
-                      <ul>
-                        <li>Technology Exploration - Explore industry, innovation, and technology landscapes to identify opportunity areas
-                          within your business to pursue.
+                      <div id="text-corp">
+                        <ul>
+                          <li>Technology Exploration - Explore industry, innovation, and technology landscapes to identify opportunity areas
+                            within your business to pursue.
                       </li>
-                        <li>Concept Design - Design out a variety of concepts that offer transformative solutions to your opportunity areas.
+                          <li>Concept Design - Design out a variety of concepts that offer transformative solutions to your opportunity areas.
                       </li>
-                        <li>Solution Design - Design out your concept idea into a viable innovation solution.
+                          <li>Solution Design - Design out your concept idea into a viable innovation solution.
                       </li>
-                        <li>Prototype Testing - Build out prototypes of your solution feature set and pressure test it in a proof of concept.
+                          <li>Prototype Testing - Build out prototypes of your solution feature set and pressure test it in a proof of concept.
                       </li>
-                        <li>Proof of Concept - Build out a holistic prototype of your solution and optimize it in a proof of concept.
+                          <li>Proof of Concept - Build out a holistic prototype of your solution and optimize it in a proof of concept.
                       </li>
-                        <li>Discovery - Uncover and connect with the most promising and qualified startups within an identified opportunity area.
+                          <li>Discovery - Uncover and connect with the most promising and qualified startups within an identified opportunity area.
                       </li>
-                        <li>Industry collaborative - Develop pilot partnerships with emerging growth companies within a specific industry focus.
+                          <li>Industry collaborative - Develop pilot partnerships with emerging growth companies within a specific industry focus.
                       </li>
-                      </ul>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>

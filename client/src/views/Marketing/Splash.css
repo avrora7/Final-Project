@@ -26,11 +26,20 @@ p {
 }
 
 .abouts {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .abouts .desc h4 {
     margin-top: 0;
+}
+
+#corp-pad {
+    padding-left: 50px;
+}
+
+#text-corp {
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @media only screen and (max-width: 767px) {
@@ -121,6 +130,10 @@ p {
 
 .section-heading {
     margin-top: 60px;
+}
+
+#corp {
+    margin-bottom: -30px !important;
 }
 
 section {

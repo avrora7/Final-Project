@@ -6,7 +6,15 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     //console.log(req)
     console.log(req.user.dataValues)
-    res.json("ok");
+
+    res.json({
+      isVendor: req.user.dataValues.isVendor,
+      isComplete: req.user.dataValues.address != null &&
+      usr.country != null &&
+      usr.intro != null &&
+      usr.phone != null &&
+      usr.intro != null
+    });
   });
 
   app.post("/api/signup", function (req, res) {
@@ -32,6 +40,17 @@ module.exports = function (app) {
     req.logout();
     res.redirect("/");
   });
+
+  app.get("/api/user/currentprofileform", function (req, res) {
+    db.Specialization.findAll({include:[{ model: db.Service, as: "Service"}]}).then(function(data) {
+      
+      res.json({
+        user: req.user,
+        specs: data
+      });
+    });
+    
+  }); 
 
   // Route for getting data about our user to be used client side
   app.get("/api/user", function (req, res) {

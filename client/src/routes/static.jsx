@@ -1,6 +1,7 @@
 import Splash from "views/Marketing/Splash.jsx";
 import Login from "views/Marketing/Login.jsx";
 import Signup from "views/Marketing/Signup.jsx";
+import CompleteProfile from "views/Business/CompleteProfile.jsx";
 
 var staticRoutes = [
   {
@@ -20,6 +21,12 @@ var staticRoutes = [
     name: "Signup",
     icon: "design_app",
     component: Signup
+  },
+  {
+    path: "/complete_profile",
+    name: "CompleteProfile",
+    icon: "design_app",
+    component: CompleteProfile
   },
   { redirect: true, path: "/", pathTo: "/splash", name: "Splash" }
   

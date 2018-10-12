@@ -1,0 +1,27 @@
+
+.MarketingLoginMenuBtn {
+    background-color:#f96332;
+    color:white;
+    border-radius: 0.1875rem;
+    padding: 1px 12px !important;
+    margin: 7px !important;
+}
+
+#navhead {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f96332;
+}
+
+.nav-item {
+    font-size: 20px;
+    font-weight: 550;
+}
+
+.navbar-action-button {
+    font-weight: normal !important;
+}
+
+.navbar {
+    margin-bottom: 0px !important;
+}

@@ -30,7 +30,6 @@ module.exports = function (app) {
     db.User.create(userData).then(function (result) {
       res.json(result);
     }).catch(function (err) {
-      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + err);
       res.status(500).json(err);
     });
   });
@@ -54,10 +53,19 @@ module.exports = function (app) {
 
   // Route for getting data about our user to be used client side
   app.get("/api/user", function (req, res) {
-    console.log("********************** in user get *************************")
     console.log(req.user);
     res.json(new Date().toISOString());
   }); 
+
+  app.put("/api/user", function (req, res) {
+    db.User.update(
+      req.body,
+      {returning: true, where: {id: req.user.id}}
+    ).then(function(rowsUpdated) {
+      console.log(rowsUpdated);
+      res.json("ok");
+    })
+  });
 
 
   app.use(function(req, res){

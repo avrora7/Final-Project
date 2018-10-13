@@ -59,7 +59,6 @@ class Login extends React.Component {
                         window.location.replace(replaceUrl);
                     });
                 }).catch(error => {
-                    alert("failed " + error)
                     this.setState({ error: "Incorrect response from the server: " + error });
                 }); // parses response to JSON
 
@@ -93,7 +92,7 @@ class Login extends React.Component {
                                         placeholder="Password " />
                                 </FormGroup>
                                 <Button className="btn btn-primary">Login</Button>
-                                <br /><a href="signup">Click here </a>to sign up.
+                                <br />Or <a href="signup">click here </a>to sign up.
                         </form>
                         </CardBody>
                     </Card>

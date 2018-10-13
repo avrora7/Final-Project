@@ -32,6 +32,15 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
           }
         });
+
+        Relationship.hasMany(models.Message, {
+          as: "Messages",
+          foreignKey: {
+            name: "relationshipId",
+            allowNull: false,
+            onDelete: 'cascade'
+          }
+        });
       };
 
     

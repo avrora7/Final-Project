@@ -155,7 +155,7 @@ class Signup extends React.Component {
                                         <br />
                                     )}
                                 <button type="submit" className="btn btn-primary">Sign up</button>
-                                <br /><a href="login">Click here </a>to login.
+                                <br />Or <a href="login">click here </a>to login.
                         </form>
                         </CardBody>
                     </Card>

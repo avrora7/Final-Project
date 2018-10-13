@@ -15,7 +15,7 @@ class Splash extends React.Component {
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading gitintro-text">StartHub</h2>
                 <h3 className="section-subheading">
-                  We provide speed and direction to the world’s top tech startup and corporate innovators.
+                  Global Program Designed to Propel Startups
                 </h3>
                 <a className="btn btn-primary btn-xl text-uppercase" href="/signup">Sign Up</a>
               </div>
@@ -30,7 +30,7 @@ class Splash extends React.Component {
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Services</h2>
                 <h4 className="section-subheading">
-                  Global Program Designed to Propel Startups.
+                We provide speed and direction to the world’s top tech startup and corporate innovators
                 </h4>
               </div>
             </div>
@@ -49,10 +49,10 @@ class Splash extends React.Component {
                 <img className="img-fluid" src="/img/portfolio/02-thumbnail.jpg" alt="" />
                 <div className="portfolio-caption text-center">
                   <h4>Incubator</h4>
-                  <p className="text-center">The main purpose of an incubator is to help startups to grow. They are
-                  collaborative programs which help people solve problems associated with launching a startup by providing
-                   a space to work, seed funding, mentoring, training and other benefits. They tend to allow startups to
-                   base themselves within the incubator for months or years. </p>
+                  <p className="text-center">The main purpose of our incubators is to help your startup to grow. These are
+                  collaborative programs which help you solve problems associated with launching a startup by providing
+                   a space to work, seed funding, mentoring, training and other benefits. We allow startups to
+                   base themselves within our incubators for months or years. </p>
                 </div>
               </div>
               <div className="col-md-4 col-sm-6 portfolio-item text-center">
@@ -105,11 +105,11 @@ class Splash extends React.Component {
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Programs</h2>
                 <h4 className="section-subheading">
-                  Startup Benefits to participate in our Programs include:
+                  The benefits to your startups by participating in our Programs include:
                   no equity requirements, gain brand and product exposure, connect with leading industry mentors,
                   validate your product through pilot testing with corporate collaborators, accelerate growth through
                   industry knowledge and startup fundamentals, get real-time feedback during development, introduction
-                  to industry leading corporations and potential investment opportunities.
+                  to industry leading corporations and potential investment opportunities
                 </h4>
               </div>
             </div>
@@ -121,12 +121,11 @@ class Splash extends React.Component {
                 </span>
                 <h4 className="service-heading">Incubator</h4>
                 <p>
-                  An ncubator is set up to reduce the chances of failure of early-stage startups and to help the economic
-                  viability and growth of startups. Incubators are set up to create sustainable and strong
-                  entrepreneurial support system and enable young entrepreneurs to find
-                  support and resources to build successful startups.  Here is what you should look for in a business incubator
-                  before you choose a program: space and design, community resources, team, network activities, partners and
-                  links, service providers.
+                  The incubator is set up to reduce the chances of failure of early-stage startups and to help the economic
+                  viability and growth of startups. Incubators create sustainable and strong entrepreneurial support system 
+                  and enable young entrepreneurs to find support and resources to build successful startups.  Our incubators
+                  provide more than just a program. We offer a unique blend of our top of the line space and design, community resources, team, network activities, partners and
+                  links, and service providers
                 </p>
               </div>
               <div className="col-md-4">
@@ -140,7 +139,7 @@ class Splash extends React.Component {
                   innovation. Unlike other accelerator programs, this program is designed to be an ongoing innovation
                   platform that will result in a continuous stream of commercially viable solutions. Startups in the
                   program will have the opportunity to work hand-in-hand with the corporate collaborators in a
-                  dedicated product validation program.</p>
+                  dedicated product validation program</p>
               </div>
               <div className="col-md-4">
                 <span className="fa-stack fa-4x">
@@ -153,7 +152,7 @@ class Splash extends React.Component {
                   and growth. The program includes curated sessions and one to one mentoring by experienced tech professionals and
                   Mentors. During the program, the startups will also network and interact with Corporates and pitch to Silicon
                   Valley Investors. Our campus is located in the heart of Silicon Valley. Through perspective-widening conversations
-                   and genuine relationships we ignite “Eureka” moments.
+                   and genuine relationships we ignite “Eureka” moments
                 </p>
               </div>
             </div>
@@ -167,15 +166,15 @@ class Splash extends React.Component {
             <div className="row  text-center">
               <div classNafa fa-book aria-hidden='true' >
                 <h2 className="section-heading text-uppercase">Funding</h2>
-                <h3>Funding for startups is available in all sorts of forms, and an entrepreneur would be wise to
-                  consider and evaluate all forms of capital available for each stage of the business.</h3>
+                <h3>Funding for startups is available in all sorts of forms, and as an entrepreneur, you would be wise to
+                  consider and evaluate all forms of capital available for each stage of the business</h3>
               </div>
             </div>
             <div className="abouts">
               <img src="/img/about/1.jpg" alt="" />
               <div class="desc">
-                <h4 className="subheading">Personal Savings, Family and Friends</h4>
-                <p> This is the most appealing source of financing, because you use your own money to jumpstart your
+                <h4 className="subheading">Bootstrapping </h4>
+                <p> Using personal savings, family and friends is the most appealing source of financing, because you use your own money to jumpstart your
                   business and don’t owe anyone else in the process. You can request your friends, family or close
                   associates to help kick off a business to a point where it can seek and get other types of funding.
                   <ul>
@@ -227,7 +226,7 @@ class Splash extends React.Component {
               <img src="/img/about/4.jpg" alt="" />
               <div className="desc">
                 <h4 className="subheading"> Venture Capital</h4>
-                <p>Put in a considerable amount of money in exchange for equity in the business, and get returns when the business
+                <p>VC put in a considerable amount of money in exchange for equity in the business, and get returns when the business
                   goes public or is acquired by another company. Venture capitalists are all about the money, and only invest in
                   businesses that have the potential of providing good returns on their investment.
                  <ul>
@@ -242,10 +241,6 @@ class Splash extends React.Component {
               </div>
             </div>
           </div>
-
-          {/* <div className="timeline-inverted">
-            <h4>Be Part Of Our Story!</h4>
-          </div> */}
         </section>
 
 
@@ -257,7 +252,7 @@ class Splash extends React.Component {
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Corporate</h2>
                 <div id="corp">
-                  <h3 className="section-subheading corp">Catalyze Your Business Transformation With StartHub.
+                  <h3 className="section-subheading corp">Catalyze Your Business Transformation With StartHub
                 </h3>
                 </div>
               </div>

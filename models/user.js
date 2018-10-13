@@ -37,21 +37,29 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
 
-    User.hasMany(models.Relationship, {
-      as: "Startup",
+    User.belongsTo(models.Industry, {
+      as: "Industry",
       foreignKey: {
-        name:"startupId",
-        allowNull: false
+        name:"industryId",
+        allowNull: true
       }
     });
 
-    User.hasMany(models.Relationship, {
-      as: "Vendor",
-      foreignKey: {
-        name:"vendorId",
-        allowNull: false
-      }
-    });
+    // User.hasMany(models.Relationship, {
+    //   as: "Startup",
+    //   foreignKey: {
+    //     name:"startupId",
+    //     allowNull: false
+    //   }
+    // });
+
+    // User.hasMany(models.Relationship, {
+    //   as: "Vendor",
+    //   foreignKey: {
+    //     name:"vendorId",
+    //     allowNull: false
+    //   }
+    // });
   };
 
 

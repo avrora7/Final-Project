@@ -33,14 +33,14 @@ module.exports = function (sequelize, DataTypes) {
           }
         });
 
-        Relationship.hasMany(models.Message, {
-          as: "Messages",
-          foreignKey: {
-            name: "relationshipId",
-            allowNull: false,
-            onDelete: 'cascade'
-          }
-        });
+        // Relationship.hasMany(models.Message, {
+        //   as: "Messages",
+        //   foreignKey: {
+        //     name: "relationshipId",
+        //     allowNull: false,
+        //     onDelete: 'cascade'
+        //   }
+        // });
       };
 
     

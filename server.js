@@ -37,11 +37,9 @@ app.get('/', (req, res) => {
 });
  
 db.sequelize.sync({ force: true }).then(function () {
-    db.seed(function () {
-        app.listen(port, function () {
-            console.log("App listening on PORT " + port);
-        });
-    })
+    app.listen(port, function () {
+        console.log("App listening on PORT " + port);
+    });
 });
 
 

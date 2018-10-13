@@ -37,39 +37,39 @@ Object.keys(db).forEach(function (modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.seed = function (callback) {
-  let services = [
-    { id: 1, name: 'Venture Capitalist', definition: 'VCs are the people who give money' },
-    { id: 2, name: 'Mentor', definition: 'Mentors are the people who tech' },
-    { id: 3, name: 'Lawyer', definition: 'Lawyers are the people who take your money' },
-    { id: 4, name: 'Incubators & Accelerators', definition: 'Incubators help you gain experience' }
-  ];
+// db.seed = function (callback) {
+//   let services = [
+//     { id: 1, name: 'Venture Capitalist', definition: 'VCs are the people who give money' },
+//     { id: 2, name: 'Mentor', definition: 'Mentors are the people who tech' },
+//     { id: 3, name: 'Lawyer', definition: 'Lawyers are the people who take your money' },
+//     { id: 4, name: 'Incubators & Accelerators', definition: 'Incubators help you gain experience' }
+//   ];
 
-  let specializations = [
-    { name: 'Angel', serviceId: 1 },
-    { name: 'Seed', serviceId: 1 },
-    { name: 'Mid', serviceId: 1 },
-    { name: 'Late', serviceId: 1 },
+//   let specializations = [
+//     { name: 'Angel', serviceId: 1 },
+//     { name: 'Seed', serviceId: 1 },
+//     { name: 'Mid', serviceId: 1 },
+//     { name: 'Late', serviceId: 1 },
 
-    { name: 'Marketing', serviceId: 2 },
-    { name: 'Sales', serviceId: 2 },
-    { name: 'Human Resources', serviceId: 2 },
+//     { name: 'Marketing', serviceId: 2 },
+//     { name: 'Sales', serviceId: 2 },
+//     { name: 'Human Resources', serviceId: 2 },
 
-    { name: 'Corporate', serviceId: 3 },
-    { name: 'Immigration', serviceId: 3 },
-    { name: 'Intellectual Property', serviceId: 3 },
+//     { name: 'Corporate', serviceId: 3 },
+//     { name: 'Immigration', serviceId: 3 },
+//     { name: 'Intellectual Property', serviceId: 3 },
 
-    { name: 'Incubators', serviceId: 4 },
-    { name: 'Accelerators', serviceId: 4 }
-  ];
+//     { name: 'Incubators', serviceId: 4 },
+//     { name: 'Accelerators', serviceId: 4 }
+//   ]; 
 
-  this.Service.bulkCreate(
-    services
-  ).then(() => {
-    return this.Specialization.bulkCreate(specializations)
-  }).then(() => {
-    callback();
-  });
-}
+//   this.Service.bulkCreate(
+//     services
+//   ).then(() => {
+//     return this.Specialization.bulkCreate(specializations)
+//   }).then(() => {
+//     callback();
+//   });
+// }
 
 module.exports = db;

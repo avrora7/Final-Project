@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
                 name: "fromId",
                 allowNull: false
             }
-        });
+        }); 
         Message.belongsTo(models.Relationship, {
             as: "Relationship",
             foreignKey: {

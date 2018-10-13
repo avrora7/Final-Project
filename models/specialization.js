@@ -16,6 +16,14 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
           }
         });
+
+        Specialization.hasMany(models.User, {
+          as: "User",
+          foreignKey: {
+            name: "specializationId",
+            allowNull:true
+          }
+        });
       };
 
     return Specialization;

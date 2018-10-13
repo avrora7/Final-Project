@@ -36,6 +36,22 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: true
       }
     });
+
+    User.hasMany(models.Relationship, {
+      as: "Startup",
+      foreignKey: {
+        name:"startupId",
+        allowNull: false
+      }
+    });
+
+    User.hasMany(models.Relationship, {
+      as: "Vendor",
+      foreignKey: {
+        name:"vendorId",
+        allowNull: false
+      }
+    });
   };
 
 

@@ -25,15 +25,8 @@ require("./api-routes.js")(app);
 var db = require("./models");
 
 app.get('/', (req, res) => {
-
-    let movies = [
-        { id: 101, name: "Fight Club", year: 1999, rating: 8.1 },
-        { id: 102, name: "Inception", year: 2010, rating: 8.7 },
-        { id: 103, name: "The Dark Knight", year: 2008, rating: 9 },
-        { id: 104, name: "12 Angry Men", year: 1957, rating: 8.9 }
-    ];
-
-    res.json(movies);
+    //test api
+    res.json(new Date().toTimeString());
 });
  
 db.sequelize.sync({ force: true }).then(function () {

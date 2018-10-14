@@ -125,6 +125,9 @@ db.Service.bulkCreate(services).then(() => {
 })
 .then(() => {
     return db.User.bulkCreate(allUsers, {individualHooks: true})
+})
+.then(() => {
+    process.exit(1);
 });
   
   

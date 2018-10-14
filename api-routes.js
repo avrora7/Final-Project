@@ -7,10 +7,8 @@ const NOT_AUTH_MSG = "Not authenticated";
 
 
 module.exports = function (app) {
-  app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    //console.log(req)
-    console.log(req.user.dataValues)
 
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json({
       isVendor: req.user.dataValues.isVendor,
       isComplete: req.user.dataValues.address != null &&
@@ -46,19 +44,40 @@ module.exports = function (app) {
 
   const getSpecializations = (callback) => {
     db.Specialization.findAll({ include: [{ model: db.Service, as: "Service" }] }).then(function (data) {
-      return callback(data);
+      callback(data);
     });
+  }
+
+  const getIndustries = (callback) => {
+    db.Industry.findAll().then(function(data) {
+      callback(data)
+    })
   }
 
 
 
   app.get("/api/user/currentprofileform", function (req, res) {
-    getSpecializations(function (data) {
-      res.json({
-        user: req.user,
-        specs: data
-      });
-    })
+
+    if (!req.isAuthenticated()) {
+      res.status(401).json(NOT_AUTH_MSG);
+    } else {
+      if (req.user.isVendor) {
+        getSpecializations(function (data) {
+          res.json({
+            user: req.user,
+            specs: data
+          });
+        });
+      } else {
+        getIndustries(function (data) {
+          res.json({
+            user: req.user,
+            industries: data
+          });
+        })
+      }
+    }
+    
   });
 
   app.get("/api/specialization", function (req, res) {
@@ -68,58 +87,8 @@ module.exports = function (app) {
   });
 
 
-
-  // app.get("/api/user/list", function (req, res) {
-  //   if (!res.isAuthenticated) {
-  //     res.status(401).json(NOT_AUTH_MSG);
-  //   }
-  //   else {
-
-  //     let iAmVendor = req.user.isVendor;
-
-  //     let userWhereClause = {
-  //       isVendor: !iAmVendor,
-  //     }
-  //     if (req.specializationId != null) {
-  //       whereClause.specializationId = req.specializationId;
-  //     }
-
-  //     db.User.findAll(
-  //       {
-  //         where: userWhereClause
-  //       }).then(function (users) {
-
-  //         let relationshipWhereClause = {};
-  //         if (!iAmVendor) {
-  //           relationshipWhereClause.starupId = req.user.id;
-  //         } else {
-  //           relationshipWhereClause.vendorId = req.user.id;
-  //         }
-
-  //         db.Relationship.findAll(
-  //           { where: relationshipWhereClause }
-  //         ).then(function (relationships) {
-  //           let relMap = {};
-  //           relationships.map(nextRel => {
-  //             relMap[nextRel.vendorId] = nextRel.status
-  //           });
-  //           users.forEach(usr => {
-  //             if (relMap[usr.id] != null) {
-  //               usr.status = relMap[usr.id];
-  //             }
-  //             else {
-  //               usr.status = "None";
-  //             }
-  //           });
-  //           res.json(users);
-  //         })
-
-  //       })
-  //   }
-  // });
-
   app.get("/api/user/list", function (req, res) {
-    if (!res.isAuthenticated) {
+    if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
@@ -155,7 +124,7 @@ module.exports = function (app) {
 
   //list user relationships for a current user
   app.get("/api/relationsip", function (req, res) {
-    if (!res.isAuthenticated) {
+    if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
@@ -199,7 +168,7 @@ module.exports = function (app) {
 
   //create a relationship
   app.post("/api/relationship/:startupId/:vendorId", function (req, res) {
-    if (!res.isAuthenticated) {
+    if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
@@ -216,7 +185,7 @@ module.exports = function (app) {
 
   //change status of relationship
   app.put("/api/relationship/:id", function (req, res) {
-    if (!res.isAuthenticated) {
+    if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
@@ -235,7 +204,7 @@ module.exports = function (app) {
 
   //delete a relationship
   app.delete("/api/relationship:id", function (req, res) {
-    if (!res.isAuthenticated) {
+    if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
@@ -247,7 +216,7 @@ module.exports = function (app) {
 
   //create a message
   app.post("/api/message:relationshipId", function (req, res) {
-    if (!res.isAuthenticated) {
+    if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
@@ -272,13 +241,19 @@ module.exports = function (app) {
   });
 
   app.put("/api/user", function (req, res) {
-    db.User.update(
-      req.body,
-      { returning: true, where: { id: req.user.id } }
-    ).then(function (rowsUpdated) {
-      console.log(rowsUpdated);
-      res.json("ok");
-    })
+    if (!req.isAuthenticated()) {
+      res.status(401).json(NOT_AUTH_MSG);
+    }
+    else {
+      db.User.update(
+        req.body,
+        { returning: true, where: { id: req.user.id } }
+      ).then(function (rowsUpdated) {
+        console.log(rowsUpdated);
+        res.json("ok");
+      });
+    }
+    
   });
 
 

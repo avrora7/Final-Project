@@ -17,13 +17,13 @@ module.exports = function (sequelize, DataTypes) {
           }
         });
 
-        // Specialization.hasMany(models.User, {
-        //   as: "User",
-        //   foreignKey: {
-        //     name: "specializationId",
-        //     allowNull:true
-        //   }
-        // });
+        Specialization.hasMany(models.User, {
+          as: "User",
+          foreignKey: {
+            name: "specializationId",
+            allowNull:true
+          }
+        });
       };
 
     return Specialization;

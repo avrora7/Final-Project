@@ -6,6 +6,7 @@ import ConnectToStartup from "views/Business/ConnectToStartup.jsx";
 import ConnectionsWithStartups from "views/Business/ConnectionsWithStartups.jsx";
 import ConnectToVendor from "views/Business/ConnectToVendor.jsx";
 import ConnectionsWithVendors from "views/Business/ConnectionsWithVendors.jsx";
+import Profile from "views/Business/Profile.jsx";
 
 
 var staticRoutes = [
@@ -56,6 +57,12 @@ var staticRoutes = [
     name: "ConnectionsWithVendors",
     icon: "design_app",
     component: ConnectionsWithVendors
+  },
+  {
+    path: "/profile/:userId",
+    name: "ConnectionsWithVendors",
+    icon: "design_app",
+    component: Profile
   },
    
   { redirect: true, path: "/", pathTo: "/splash", name: "Splash" }

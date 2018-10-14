@@ -46,18 +46,18 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     User.hasMany(models.Relationship, {
-      as: "Startup",
+      as: "StartupRelationships",
       foreignKey: {
         name:"startupId",
-        allowNull: false
+        allowNull: true
       }
     });
 
     User.hasMany(models.Relationship, {
-      as: "Vendor",
+      as: "VendorRelationships",
       foreignKey: {
         name:"vendorId",
-        allowNull: false
+        allowNull: true
       }
     });
   };

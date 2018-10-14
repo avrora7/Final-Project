@@ -20,16 +20,26 @@ module.exports = function (sequelize, DataTypes) {
           as: "Vendor",
           foreignKey: {
             name:"vendorId",
-            allowNull: false
+            allowNull: true
           }
         });
+
+        // Relationship.hasOne(models.User, {
+        //   as: "Vendor",
+        //   foreignKey: {
+        //     name:"vendorId",
+        //     allowNull: true
+        //   }
+        // });
+
+        
 
        
         Relationship.belongsTo(models.User, {
           as: "Startup",
           foreignKey: {
             name: "startupId",
-            allowNull: false
+            allowNull: true
           }
         });
 
@@ -37,7 +47,7 @@ module.exports = function (sequelize, DataTypes) {
           as: "Messages",
           foreignKey: {
             name: "relationshipId",
-            allowNull: false,
+            allowNull: true,
             onDelete: 'cascade'
           }
         });

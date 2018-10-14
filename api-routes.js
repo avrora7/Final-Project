@@ -9,13 +9,19 @@ const NOT_AUTH_MSG = "Not authenticated";
 module.exports = function (app) {
 
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
+
+    let isComplete = 
+    req.user.dataValues.address != null &&
+    req.user.dataValues.country != null &&
+    req.user.dataValues.intro != null &&
+    req.user.dataValues.phone != null &&
+    req.user.dataValues.intro != null;
+
+    console.log("is complete =" + isComplete);
+
     res.json({
       isVendor: req.user.dataValues.isVendor,
-      isComplete: req.user.dataValues.address != null &&
-        usr.country != null &&
-        usr.intro != null &&
-        usr.phone != null &&
-        usr.intro != null
+      isComplete: isComplete
     });
   });
 
@@ -87,20 +93,35 @@ module.exports = function (app) {
   });
 
 
-  app.get("/api/user/list", function (req, res) {
+  app.get("/api/user/list/:selectionId", function (req, res) {
     if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
 
+      let retVal = {
+        industries:[],
+        specializations:[]
+      };
+
       let iAmVendor = req.user.isVendor;
 
+      //selecting only counterparts
       let userWhereClause = {
         isVendor: !iAmVendor,
       }
-      if (req.specializationId != null) {
-        whereClause.specializationId = req.specializationId;
+
+      //adding filtering criteria. Different for different role
+      if (req.params.selectionId != "-1") {
+        let selectionId = parseInt(req.params.selectionId);
+        if (iAmVendor) {
+          userWhereClause.industryId = selectionId;
+        } else {
+          userWhereClause.specializationId = selectionId;
+        }
       }
+
+      console.log(userWhereClause);
 
       db.User.findAll(
       {
@@ -108,16 +129,38 @@ module.exports = function (app) {
         include: [
           {
             model: db.Relationship,
+            as: iAmVendor? "VendorRelationships" : "StartupRelationships",
             where: {
               [iAmVendor? "vendorId": "startupId"]:req.user.id
             },
+            required: false,
             include: [
-              {model: db.Message}
+              {
+                as: "Messages",
+                model: db.Message,
+                required: false
+              }
             ]
           }
         ]
       }).then(function (users) {
-          res.json(users);
+
+          console.log("number of users=" + users.length)
+
+          if (iAmVendor) {
+            getIndustries(function(industries) {
+              retVal.industries = industries;
+              retVal.users = users;
+              res.json(retVal);
+            });
+          } else {
+            getSpecializations(function(specializations) {
+              retVal.specializations = specializations;
+              retVal.users = users;
+              res.json(retVal);
+            });
+          }
+          
       });
     }
   });
@@ -251,7 +294,7 @@ module.exports = function (app) {
       ).then(function (rowsUpdated) {
         console.log(rowsUpdated);
         res.json("ok");
-      });
+      }); 
     }
     
   });

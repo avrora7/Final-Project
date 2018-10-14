@@ -46,14 +46,16 @@ class Login extends React.Component {
 
                         let replaceUrl = null;
 
-                        if (!data.isProfileComplete) {
+                        console.log(data)
+
+                        if (!data.isComplete) {
                                 replaceUrl = "/complete_profile";
                         }
                         else {
                             if (data.isVendor) {
-                                replaceUrl = "/workrea/vendor_dashboard";
+                                replaceUrl = "/connect_to_startup";
                             } else {
-                                replaceUrl = "/workrea/startup_dashboard";
+                                replaceUrl = "/connect_to_vendor";
                             }
                         }
                         window.location.replace(replaceUrl);

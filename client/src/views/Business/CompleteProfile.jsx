@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardBody, Input, FormGroup, FormText } from "reactstrap";
+import { Card, CardHeader, CardBody, Input, FormGroup } from "reactstrap";
 import "../Marketing/Marketing.css";
 import VendorNavbar from "components/VendorNavbar/VendorNavbar.jsx";
 import StartupNavbar from "components/StartupNavbar/StartupNavbar.jsx";
@@ -18,8 +18,10 @@ class CompleteProfile extends React.Component {
             intro: "",
             isVendor: false,
             specialization: -1,
+            industry: -1,
             error: null,
-            specs: []
+            specs: [],
+            industries: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,13 +39,20 @@ class CompleteProfile extends React.Component {
                             window.location.replace("/")
                         }
                         let specs = [];
-                        json.specs.forEach(elt => {
-                            let nextId = elt.id;
-                            let nextText = elt.name + " -> " + elt.Service.name;
-                            specs.push({ id: nextId, name: nextText });
-                        });
+                        if (json.specs != null) {
+                            json.specs.forEach(elt => {
+                                let nextId = elt.id;
+                                let nextText = elt.name + " -> " + elt.Service.name;
+                                specs.push({ id: nextId, name: nextText });
+                            });
+                        }
+                        let industries = [];
+                        if (json.industries != null) {
+                            industries = json.industries;
+                        }
+
                         console.log(specs);
-                        that.setState({ isVendor: json.user.isVendor, specs: specs });
+                        that.setState({ isVendor: json.user.isVendor, specs: specs, industries: industries });
                     });
                 }
             }).catch(error => {
@@ -70,25 +79,37 @@ class CompleteProfile extends React.Component {
             this.state.country.trim() !== "" &&
             this.state.phone.trim() !== "" &&
             this.state.manager.trim() !== "" &&
-            this.state.specialization.trim() !== "" &&
+            (
+                (this.state.isVendor && this.state.specialization !== -1)
+                ||
+                (!this.state.isVendor && this.state.industry !== -1)
+            ) &&
             this.state.intro.trim() !== "";
         if (validated) {
+
+            let body = {
+                address: that.state.address,
+                zip: that.state.zip,
+                state: that.state.state,
+                country: that.state.country,
+                phone: that.state.phone,
+                manager: that.state.manager,
+                intro: that.state.intro
+            };
+
+            if (this.state.isVendor) {
+                body.specializationId = parseInt(that.state.specialization);
+            } else {
+                body.industryId = parseInt(that.state.industry);
+            }
+
             fetch("/api/user", {
                 method: "PUT",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    address: that.state.address,
-                    zip: that.state.zip,
-                    state: that.state.state,
-                    country: that.state.country,
-                    phone: that.state.phone,
-                    manager: that.state.manager,
-                    specializationId: parseInt(that.state.spacialization),
-                    intro: that.state.intro
-                })
+                body: JSON.stringify(body)
             })
                 .then(response => {
                     if (!response.ok) {
@@ -97,9 +118,9 @@ class CompleteProfile extends React.Component {
 
                     response.json().then(function (data) {
                         if (that.state.isVendor) {
-                            window.location.replace("/workarea/vendor_dashboard");
+                            window.location.replace("/connect_to_startup");
                         } else {
-                            window.location.replace("/workarea/startup_dashboard");
+                            window.location.replace("/connect_to_vendor");
                         }
                     });
                 }).catch(error => {
@@ -169,7 +190,7 @@ class CompleteProfile extends React.Component {
                                                     placeholder="Manager " />
                                             </FormGroup>
                                             {this.state.isVendor ? (
-                                                <span> <FormGroup>
+                                                <FormGroup>
                                                     <Input type="select"
                                                         name="specialization"
                                                         defaultValue="-1"
@@ -180,8 +201,21 @@ class CompleteProfile extends React.Component {
                                                             return <option key={index} value={spec.id}>{spec.name}</option>;
                                                         })}
                                                     </Input>
-                                                </FormGroup> </span>
-                                            ) : (<span></span>)}
+                                                </FormGroup>
+                                            ) : (
+                                                    <FormGroup>
+                                                        <Input type="select"
+                                                            name="industry"
+                                                            defaultValue="-1"
+                                                            id="industry"
+                                                            onChange={this.handleChange}>
+                                                            <option value="-1" >Select an industry</option>
+                                                            {this.state.industries.map(function (industry, index) {
+                                                                return <option key={index} value={industry.id}>{industry.name}</option>;
+                                                            })}
+                                                        </Input>
+                                                    </FormGroup>
+                                                )}
 
                                             <FormGroup>
                                                 <Input type="textarea" name="intro" id="intro"
@@ -192,13 +226,12 @@ class CompleteProfile extends React.Component {
 
                                             {this.state.error ? (
                                                 <span className="text-danger">{this.state.error}<br /></span>
-
                                             ) : (
-                                                    <br />
-                                                )}
+                                                <br />
+                                            )}
                                             <button type="submit" className="btn btn-primary">Save</button>
-                                            <br /><a href="login">Click here </a>to login.
-                        </form>
+
+                                        </form>
                                     </CardBody>
                                 </Card>
 

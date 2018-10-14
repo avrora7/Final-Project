@@ -33,23 +33,17 @@ class ConnectToStartup extends React.Component {
 
     componentDidMount() {
         let that = this;
-        fetch("/api/user/list/" + this.state.industryId)
-            .then(response => {
-                if (!response.ok) that.setState({ error: response.statusText })
-                else {
-                    response.json().then(function (json) {
-                        json.users.forEach(user => {
-                            that.extractRelationshipsAndMessageCount(user);
-                        })
-                        
 
-                        that.setState({ users: json.users, industries: json.industries });
-                    });
-                }
-            }).catch(error => {
-                alert("failed " + error)
-                that.setState({ error: "Incorrect response from the server: " + error });
-            }); // parses response to JSON
+        window.axios.get("/api/user/list/" + this.state.industryId, this.state)
+        .then(res => {
+            res.data.users.forEach(user => {
+                that.extractRelationshipsAndMessageCount(user);
+            });
+            that.setState({ users: res.data.users, industries: res.data.industries });
+        })
+        .catch(error => {
+            this.setState({error: "Error"})
+        });
     }
 
     handleChange(event) {
@@ -101,7 +95,7 @@ class ConnectToStartup extends React.Component {
                                 return <tr key={index}>
                                     <td>{user.id}</td>
                                     <td><a href={'/profile/' + user.id}>{user.company}</a></td>
-                                    <td>{user.address}, {user.zip}, {user.country}</td>
+                                    <td>{user.address}, {user.city}, {user.zip}, {user.country}</td>
                                     <td>{user.relationship.status}
                                         {user.relationship.status !== STATUS_NA ? (
                                         <span><br/>{user.relationship.messageCount} Messages</span>

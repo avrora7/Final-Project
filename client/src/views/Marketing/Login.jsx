@@ -10,6 +10,7 @@ class Login extends React.Component {
         this.state = {
             email: "",
             password: "",
+            error: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +29,7 @@ class Login extends React.Component {
             this.state.email.trim() !== "" &&
             this.state.password.trim() !== ""
         ) {
+            //using Fetch since Axios has horrible HTTP error hendling
             fetch("/api/login", {
                 method: "POST",
                 headers: {
@@ -37,32 +39,36 @@ class Login extends React.Component {
                 mode: "cors",
                 body: JSON.stringify(this.state)
             })
-                .then(response => {
-                    if (!response.ok) {
-                        this.setState({ error: response.statusText })
+            .then(response => {
+                console.log(response)
+                
+                if (response.status == 401) {
+                    this.setState({error:"Incorrect login credentials"});
+                    return;
+                }
+
+                if (!response.ok) {
+                    this.setState({ error: response.statusText })
+                    return;
+                }
+
+                response.json().then(function (data) {
+                    let replaceUrl = null;
+                    if (!data.isComplete) {
+                            replaceUrl = "/complete_profile";
                     }
-
-                    response.json().then(function (data) {
-
-                        let replaceUrl = null;
-
-                        console.log(data)
-
-                        if (!data.isComplete) {
-                                replaceUrl = "/complete_profile";
+                    else {
+                        if (data.isVendor) {
+                            replaceUrl = "/connect_to_startup";
+                        } else {
+                            replaceUrl = "/connect_to_vendor";
                         }
-                        else {
-                            if (data.isVendor) {
-                                replaceUrl = "/connect_to_startup";
-                            } else {
-                                replaceUrl = "/connect_to_vendor";
-                            }
-                        }
-                        window.location.replace(replaceUrl);
-                    });
-                }).catch(error => {
-                    this.setState({ error: "Incorrect response from the server: " + error });
-                }); // parses response to JSON
+                    }
+                    window.location.replace(replaceUrl);
+                });
+            }).catch(error => {
+                this.setState({ error: "Incorrect response from the server: " + error });
+            }); // parses response to JSON
 
         }
         else {
@@ -93,6 +99,12 @@ class Login extends React.Component {
                                         onChange={this.handleChange}
                                         placeholder="Password " />
                                 </FormGroup>
+                                {this.state.error ? (
+                                    <span className="text-danger">{this.state.error}<br /></span>
+
+                                ) : (
+                                        <br />
+                                    )}
                                 <Button className="btn btn-primary">Login</Button>
                                 <br />Or <a href="signup">click here </a>to sign up.
                         </form>

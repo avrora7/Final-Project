@@ -39,26 +39,17 @@ class Signup extends React.Component {
             this.state.password2.trim() !== ""
         ) {
             if (this.state.password.trim() === this.state.password2.trim()) {
-                fetch("/api/signup", {
-                    method: "POST",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(this.state)
+                window.axios.post("/api/signup", this.state)
+                .then(res => {
+                    window.location.replace("/login");
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            this.setState({ error: response.statusText })
-                        }
-                        
-                        response.json().then(function (data) {
-                           window.location.replace("/login");
-                        });
-                    }).catch(error => {
-                        alert("failed " + error)
-                        this.setState({ error: "Incorrect response from the server: " + error });
-                    }); // parses response to JSON
+                .catch(error => {
+                    if (error.response) {
+                        this.setState({error: error.response})
+                      } else {
+                        this.setState({error: "Communication error"})
+                      }
+                });
             } else {
                 this.setState({ error: "Passwords don't match" });
             }

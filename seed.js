@@ -44,11 +44,15 @@ let startups = [
         password: "welcome",
         isVendor: false,
         address: "Deribasovskaya 25",
+        city: "Chernomorsk",
         zip: "94089",
         state: "Ukraine",
         country: "USSR",
         phone: "+1-800-SPAMM",
         manager: "Ostap Bender",
+        website: "https://en.wikipedia.org/wiki/The_Twelve_Chairs",
+        managerPhoto: "https://cs9.pikabu.ru/post_img/2017/10/09/11/1507578878139884879.jpg",
+        logo: "http://www.lgz.ru/upload/iblock/43e/43e566218a9927b6e82a5b71d6ee4bb2.jpg",
         intro: `At  half  past  eleven  a  young  man aged about  twenty-eight  entered
         Stargorod from the direction of the village of Chmarovka, to the north-east.
         A waif ran along behind him.
@@ -61,17 +65,21 @@ let startups = [
        
     },
     {
-        company: "Schweik and Kats",
+        company: "Schweik's Doggy DNA Test Lab",
         industryId: 8,
         email: "s2.gmail.com",
         password: "welcome",
         isVendor: false,
         address: "Bublichkova 12",
+        city: "Prague",
         zip: "94089",
         state: "Chechia",
         country: "Austro-Hungarian Empire",
         phone: "+1-800-DOGY",
         manager: "Joseph Schweik",
+        website: "https://en.wikipedia.org/wiki/The_Good_Soldier_%C5%A0vejk",
+        managerPhoto: "https://www.slavorum.org/wp-content/uploads/2014/09/vejk.jpg",
+        logo: "https://previews.123rf.com/images/saiful007/saiful0071705/saiful007170500330/78533067-vector-black-and-white-dog-smart-and-darling-doggy-outlined-cute-dog-vector-illustration-.jpg",
         intro: `When Švejk subsequently described life in the lunatic asylum, 
         he did so in exceptionally eulogistic terms: 'I really don't know why those 
         loonies get so angry when they're kept there. You can crawl naked on the 
@@ -84,17 +92,21 @@ let startups = [
 
 let vendors = [
     {
-        company: "Bernie Medoff's Financial Services",
+        company: "Bernie Madoff's Financial Services",
         specializationId: 1,
         email: "v1.gmail.com",
         password: "welcome",
         isVendor: true,
         address: "23 Wall Street, New York",
+        city: "New York",
         zip: "54009",
         state: "New York",
         country: "USA",
         phone: "+1-800-SPAMM",
-        manager: "Bernie Medoff",
+        manager: "Bernie Madoff",
+        logo: "https://static1.squarespace.com/static/53f7b930e4b04b212860c086/t/558b8993e4b0c093c6606ecb/1435208085695/",
+        website: "https://en.wikipedia.org/wiki/Bernard_Madoff",
+        managerPhoto: "https://www.telegraph.co.uk/content/dam/women/2016/09/15/bernie_madoff_trans_NvBQzQNjv4Bq3XmyF3YIL3K1caQxZsZv2ZFZpxM3kZGDghNcfq6-W-s.jpg?imwidth=1400",
         intro: `Guaranteed 1000% returns on any venture capital you get from other venture capitalists`
 
        
@@ -106,11 +118,15 @@ let vendors = [
         password: "welcome",
         isVendor: true,
         address: "245 2nd Avenue",
+        city: "New York",
         zip: "44543",
         state: "New York",
         country: "USA",
         phone: "+1-800-DOGY",
         manager: "Charles Ponzi",
+        logo: "https://localcoinatm.com/wp-content/uploads/2017/09/Blockchain-logo.png",
+        website: "https://en.wikipedia.org/wiki/Ponzi_scheme",
+        managerPhoto: "https://www.factinate.com/wp-content/uploads/2018/02/21-11.jpg",
         intro: `Will beat any offereing from Bernie Medoff.`
     }
 ];

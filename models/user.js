@@ -20,12 +20,23 @@ module.exports = function (sequelize, DataTypes) {
     },
     isVendor: DataTypes.BOOLEAN,
     address: DataTypes.STRING,
+    city: DataTypes.STRING,
     zip: DataTypes.STRING,
     state: DataTypes.STRING,
     country: DataTypes.STRING,
     phone: DataTypes.STRING,
     manager: DataTypes.STRING,
     intro: DataTypes.TEXT,
+    website: DataTypes.TEXT,
+    managerPhoto: {
+      type: DataTypes.TEXT,
+      defailtValue: "/img/vendor_icon.png"
+    },
+    logo: {
+      type: DataTypes.TEXT,
+      defailtValue: "/img/company_placeholder.jpg"
+    }
+    
   });
 
   User.associate = function (models) {

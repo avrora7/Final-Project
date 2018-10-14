@@ -10,12 +10,16 @@ class CompleteProfile extends React.Component {
         super(props);
         this.state = {
             address: "",
+            city: "",
             zip: "",
             state: "",
             country: "",
             phone: "",
             manager: "",
             intro: "",
+            logo: "",
+            managerPhoto:"",
+            website:"",
             isVendor: false,
             specialization: -1,
             industry: -1,
@@ -74,6 +78,8 @@ class CompleteProfile extends React.Component {
         event.preventDefault();
         let validated =
             this.state.address.trim() !== "" &&
+            this.state.website.trim() !== "" &&
+            this.state.city.trim() !== "" &&
             this.state.zip.trim() !== "" &&
             this.state.state.trim() !== "" &&
             this.state.country.trim() !== "" &&
@@ -89,13 +95,18 @@ class CompleteProfile extends React.Component {
 
             let body = {
                 address: that.state.address,
+                city: that.state.city,
                 zip: that.state.zip,
                 state: that.state.state,
                 country: that.state.country,
                 phone: that.state.phone,
                 manager: that.state.manager,
-                intro: that.state.intro
+                intro: that.state.intro,
+                website: that.state.website
             };
+
+            if (that.state.logo != "") body.logo = that.state.logo;
+            if (that.state.managerPhoto != "") body.managerPhoto = that.state.managerPhoto;
 
             if (this.state.isVendor) {
                 body.specializationId = parseInt(that.state.specialization);
@@ -154,10 +165,28 @@ class CompleteProfile extends React.Component {
                                     <CardBody>
                                         <form onSubmit={this.handleSubmit}>
                                             <FormGroup>
+                                                <Input type="text" name="website" id="website"
+                                                    value={this.state.website}
+                                                    onChange={this.handleChange}
+                                                    placeholder="Website " />
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Input type="text" name="logo" id="logo"
+                                                    value={this.state.logo}
+                                                    onChange={this.handleChange}
+                                                    placeholder="Logo URL " />
+                                            </FormGroup>
+                                            <FormGroup>
                                                 <Input type="text" name="address" id="address"
                                                     value={this.state.address}
                                                     onChange={this.handleChange}
                                                     placeholder="Address " />
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Input type="text" name="city" id="city"
+                                                    value={this.state.city}
+                                                    onChange={this.handleChange}
+                                                    placeholder="City " />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Input type="text" name="zip" id="zip"
@@ -188,6 +217,12 @@ class CompleteProfile extends React.Component {
                                                     value={this.state.manager}
                                                     onChange={this.handleChange}
                                                     placeholder="Manager " />
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Input type="text" name="managerPhoto" id="managerPhoto"
+                                                    value={this.state.managerPhoto}
+                                                    onChange={this.handleChange}
+                                                    placeholder="Manager photo URL " />
                                             </FormGroup>
                                             {this.state.isVendor ? (
                                                 <FormGroup>

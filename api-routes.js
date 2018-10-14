@@ -11,10 +11,13 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
 
     let isComplete = 
+    req.user.dataValues.website != null &&
     req.user.dataValues.address != null &&
+    req.user.dataValues.city != null &&
     req.user.dataValues.country != null &&
     req.user.dataValues.intro != null &&
     req.user.dataValues.phone != null &&
+    req.user.dataValues.manager != null &&
     req.user.dataValues.intro != null;
 
     console.log("is complete =" + isComplete);

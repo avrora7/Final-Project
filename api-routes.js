@@ -51,20 +51,21 @@ module.exports = function (app) {
     res.redirect("/");
   });
 
+  //reusable methosd to fetch the list of specializations and services
   const getSpecializations = (callback) => {
     db.Specialization.findAll({ include: [{ model: db.Service, as: "Service" }] }).then(function (data) {
       callback(data);
     });
   }
 
+  //reusable method for fetching industries
   const getIndustries = (callback) => {
     db.Industry.findAll().then(function(data) {
       callback(data)
     })
   }
 
-
-
+  //used in complete profile
   app.get("/api/user/currentprofileform", function (req, res) {
 
     if (!req.isAuthenticated()) {
@@ -88,14 +89,15 @@ module.exports = function (app) {
     }
     
   });
-
+  
+  //returns list of specializations, not used yet
   app.get("/api/specialization", function (req, res) {
     getSpecializations(function (data) {
       res.json(data);
     });
   });
 
-
+  //used in lists of vendors and statups
   app.get("/api/user/list/:selectionId", function (req, res) {
     if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
@@ -132,7 +134,7 @@ module.exports = function (app) {
         include: [
           {
             model: db.Relationship,
-            as: iAmVendor? "VendorRelationships" : "StartupRelationships",
+            as: iAmVendor? "StartupRelationships" : "VendorRelationships",
             where: {
               [iAmVendor? "vendorId": "startupId"]:req.user.id
             },
@@ -168,124 +170,56 @@ module.exports = function (app) {
     }
   });
 
-  //list user relationships for a current user
-  app.get("/api/relationsip", function (req, res) {
+  //if user has a relationship and messages, extrct and flatten them into user object
+  const postprocessUser = (user, iAmVendor) => {
+    let relationships = user[iAmVendor? "StartupRelationships" : "VendorRelationships"];
+    if (relationships.length == 0) {
+      user.messages = 0;
+    } else {
+      user.relationshipId = relationships[0].id;
+      user.messages = relationships[0].Messages;
+    }
+    return user;
+  }
+
+  // used in initialization or user profile page
+  app.get("/api/user/:id", function (req, res) {
     if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
     }
     else {
-      db.Relationship.findAll(
+      let iAmVendor = req.user.isVendor;
+      db.User.findOne(
         {
-          where:  {[req.user.isVendor ? "vendorId" : "startupId"]: req.user.id},
+          where: {id: req.params.id},
           include: [
             {
-              model: User,
-              as: "Statup"
-            },
-            {
-              model: User,
-              as: "Vendor"
-            },
-            { model: Message,
-              as: "Messages" 
+              model: db.Relationship,
+              as: iAmVendor? "StartupRelationships" : "VendorRelationships",
+              where: {
+                [iAmVendor? "vendorId": "startupId"]:req.user.id
+              },
+              required: false,
+              include: [
+                {
+                  as: "Messages",
+                  model: db.Message,
+                  required: false
+                }
+              ]
             }
           ]
         }
-      ).then(function (rels) {
-        res.json(rels);
-        // let relUserIds = [];//collect counterpart user ids
-        // let userStatus = {};//map counterpart user id -> rel status
-        // let userRelId = {};
-        // rels.forEach(nextRel => {
-        //   relUserIds.push(nextRel[counterpartAttr]);
-        //   userStatus[nextRel[counterpartAttr]] = nextRel.status;
-        //   userRelId[netRel[counterpartAttr]] = nextRel.id;
-        // });
-        // db.User.findAll({ where: { id: { $in: relUserIds } } }).then(function (users) {
-        //   users.forEach(usr2 => {
-        //     usr2.status = userStatus[usr2.id];
-        //     usr2.relId = userRelId[usr2.id];
-        //   });
-        //   res.json(users);
-        // });
+        ).then(user => {
+          console.log("***************************")
+          console.log(user);
+          user = postprocessUser(user.dataValues, iAmVendor)
+        res.json(user);
       });
-    }
+    } 
   });
 
-  //create a relationship
-  app.post("/api/relationship/:startupId/:vendorId", function (req, res) {
-    if (!req.isAuthenticated()) {
-      res.status(401).json(NOT_AUTH_MSG);
-    }
-    else {
-      db.Relationship.create(
-        {
-          starupId: req.params.starupId,
-          vendorId: req.params.vendorId,
-          status: db.Relationship.REQUESTED
-        }).then(function (newRel) {
-          res.json("OK");
-        });
-    }
-  });
-
-  //change status of relationship
-  app.put("/api/relationship/:id", function (req, res) {
-    if (!req.isAuthenticated()) {
-      res.status(401).json(NOT_AUTH_MSG);
-    }
-    else {
-      db.Relationship.update(
-        { status: db.Relationship.CONNECTED },
-        {
-          where: {
-            id: req.params.id
-          }
-        }
-      ).then(function (updatedRel) {
-        res.json("OK");
-      });
-    }
-  })
-
-  //delete a relationship
-  app.delete("/api/relationship:id", function (req, res) {
-    if (!req.isAuthenticated()) {
-      res.status(401).json(NOT_AUTH_MSG);
-    }
-    else {
-      db.Relationship.remove({ where: { id: req.params.id } }).then(function () {
-        res.json("OK");
-      });
-    }
-  });
-
-  //create a message
-  app.post("/api/message:relationshipId", function (req, res) {
-    if (!req.isAuthenticated()) {
-      res.status(401).json(NOT_AUTH_MSG);
-    }
-    else {
-      db.Message
-        .create(
-          {
-            fromId: req.user.id,
-            relationshipId: req.params.relationshipId,
-            text: req.body
-          })
-        .then(function () {
-          res.json("OK");
-        });
-    }
-  });
-
-
-  // Route for getting data about our user to be used client side
-  app.get("/api/user", function (req, res) {
-    console.log(req.user);
-    res.json(new Date().toISOString());
-  });
-
+  //used in complete user profile
   app.put("/api/user", function (req, res) {
     if (!req.isAuthenticated()) {
       res.status(401).json(NOT_AUTH_MSG);
@@ -302,6 +236,62 @@ module.exports = function (app) {
     
   });
 
+  //used in user detail - connect
+  app.get("/api/relationship/connect/:userId", function(req, res) {
+    if (!req.isAuthenticated()) {
+      res.status(401).json(NOT_AUTH_MSG);
+    }
+    else {
+      let iAmVendor = req.user.isVendor;
+      let myId = req.user.id;
+      let hisId = req.params.userId;
+
+      let rel = {};
+      rel.startupId = iAmVendor ? hisId : myId;
+      rel.vendorId = iAmVendor ? myId : hisId;
+
+      db.Relationship.create(rel).then(function (newRel) {
+        console.log(newRel);
+        res.json(newRel.dataValues.id);
+      }); 
+    }
+  });
+
+  //used in user detail - discionnect
+  app.get("/api/relationship/disconnect/:relationshipId", function(req, res) {
+    if (!req.isAuthenticated()) {
+      res.status(401).json(NOT_AUTH_MSG);
+    }
+    else {
+      db.Message.destroy({where: {relationshipId: req.params.relationshipId}}).then(function() 
+      {
+        db.Relationship.destroy({where: {id: req.params.relationshipId}}).then(function (data) {
+          console.log(data);
+          res.json("ok");
+        }); 
+      });
+      
+    }
+  });
+
+  //create a message
+  app.post("/api/message/:relationshipId", function (req, res) {
+    if (!req.isAuthenticated()) {
+      res.status(401).json(NOT_AUTH_MSG);
+    }
+    else {
+      console.log(req.body)
+      db.Message
+        .create(
+          {
+            relationshipId: req.params.relationshipId,
+            text: req.user.company + " wrote: " + req.body.message
+          })
+        .then(function (newMessage) {
+          res.json(newMessage);
+        });
+    }
+  });
 
   app.use(function (req, res) {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));

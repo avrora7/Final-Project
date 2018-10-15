@@ -59,8 +59,8 @@ var staticRoutes = [
     component: ConnectionsWithVendors
   },
   {
-    path: "/profile/:userId",
-    name: "ConnectionsWithVendors",
+    path: "/profile/:userId/:isVendor",
+    name: "Profile",
     icon: "design_app",
     component: Profile
   },

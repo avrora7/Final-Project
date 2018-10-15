@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
     res.json(new Date().toTimeString());
 });
  
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
     app.listen(port, function () {
         console.log("App listening on PORT " + port);
     });

@@ -5,16 +5,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER, 
             primaryKey: true, 
             autoIncrement: true 
-        },
-        status:DataTypes.STRING
+        }
     });
 
-    Relationship.REQUESTED = "requested";
-    Relationship.CONNECTED = "connected";
-
     Relationship.associate = function (models) {
-
-        console.log('user==>' + models.User)
 
         Relationship.belongsTo(models.User, {
           as: "Vendor",
@@ -24,17 +18,6 @@ module.exports = function (sequelize, DataTypes) {
           }
         });
 
-        // Relationship.hasOne(models.User, {
-        //   as: "Vendor",
-        //   foreignKey: {
-        //     name:"vendorId",
-        //     allowNull: true
-        //   }
-        // });
-
-        
-
-       
         Relationship.belongsTo(models.User, {
           as: "Startup",
           foreignKey: {

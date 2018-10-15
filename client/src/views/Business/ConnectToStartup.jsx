@@ -2,6 +2,7 @@ import React from "react";
 import { Input, FormGroup } from "reactstrap";
 import "../Marketing/Marketing.css";
 import VendorNavbar from "components/VendorNavbar/VendorNavbar.jsx";
+import "./Business.css";
 
 const STATUS_NA = "Not connected";
 
@@ -21,7 +22,7 @@ class ConnectToStartup extends React.Component {
     }
 
     extractRelationshipsAndMessageCount(user) {
-        let relArray=user.VendorRelationships;
+        let relArray=user.StartupRelationships;
         if (relArray.length > 0) {
             user.relationship = relArray[0];
             user.relationship.messageCount = relArray[0].Messages.length;
@@ -59,7 +60,7 @@ class ConnectToStartup extends React.Component {
             <div>
                 <VendorNavbar />
                 <div className="container">
-                    <h1>Connect to a Startup</h1>
+                    <h1>Startups</h1>
                     {this.state.error ? (
                         <span className="text-danger">{this.state.error}<br /></span>
                     ) : (
@@ -94,7 +95,7 @@ class ConnectToStartup extends React.Component {
                             {this.state.users.map(function (user, index) {
                                 return <tr key={index}>
                                     <td>{user.id}</td>
-                                    <td><a href={'/profile/' + user.id}>{user.company}</a></td>
+                                    <td><a href={'/profile/' + user.id + '/true'}>{user.company}</a></td>
                                     <td>{user.address}, {user.city}, {user.zip}, {user.country}</td>
                                     <td>{user.relationship.status}
                                         {user.relationship.status !== STATUS_NA ? (

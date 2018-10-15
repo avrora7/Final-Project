@@ -22,9 +22,6 @@ class VendorNavbar extends React.Component {
                         <li className="nav-item">
                             <a className="nav-link js-scroll-trigger" href="/connect_to_startup">Find a Startup</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link js-scroll-trigger" href="/connections_with_startups">My Connections</a>
-                        </li>
                     </ul>
                     <ul className="navbar-nav text-uppercase ml-auto">
                         <li className="nav-item navbar-action-button">

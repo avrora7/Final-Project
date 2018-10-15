@@ -3,6 +3,7 @@ import { Card, CardHeader, CardBody, Input, FormGroup } from "reactstrap";
 import "../Marketing/Marketing.css";
 import VendorNavbar from "components/VendorNavbar/VendorNavbar.jsx";
 import StartupNavbar from "components/StartupNavbar/StartupNavbar.jsx";
+import "./Business.css";
 
 class CompleteProfile extends React.Component {
 
@@ -148,7 +149,7 @@ class CompleteProfile extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="business">
                 {!this.state.isVendor == null ? (
                     <span>...</span>
                 ) : (
